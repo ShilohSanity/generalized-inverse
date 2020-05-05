@@ -1,0 +1,24 @@
+import sympy as sp
+def Shiloh_GI1(A):
+    n=A.shape[1]
+    p=1                                      
+    F=sp.eye(n) 
+    Y=A
+    YA=Y*A                                   
+    j=1
+    while p!=0:                              
+        YAF=YA*F
+        p=sp.trace(YAF)/j                    
+        A_pinv=F*Y/p                          
+        F=YAF-p*sp.eye(n)                    
+        j+=1
+        p=sp.trace(YA*F)/j                   
+    return A_pinv
+def Shiloh_GI(A):
+    (m,n)=A.shape
+    if m>=n:
+        A_pinv,DIM= Shiloh_GI1(A)
+    else:
+        AH_pinv,DIM= Shiloh_GI1(A.H)
+        A_pinv=AH_pinv.H
+    return A_pinv,DIM
