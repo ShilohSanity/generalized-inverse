@@ -1,2 +1,2 @@
 # generalized-inverse
-A project to calculate generalized-inverse by sympy.
+It is a notebook to noting your change or ideas.THX!
